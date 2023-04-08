@@ -1,0 +1,21 @@
+For 0,days
+    for patient in patient_list
+        If is_contagious()
+        For Friend in friend_list
+        If friend in patient_dict :
+        if random.uniform(0.0,1.0) >= meeting_prob
+        Lv
+        infect(Lv)
+        
+        If ! is_contagious
+        if friend in patient.get_friends()
+        If friend.is_contagious() and random.uniform(0.0,1.0) >= meeting_prob
+        patient.infect(Lv)
+    
+    for patient in patient_list:
+    Counter =0
+        If patient.is_contagious():
+            Counter++
+     counter_list.append(counter)
+     Sleep()
+     return(counter_list)
