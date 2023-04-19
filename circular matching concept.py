@@ -35,7 +35,8 @@ int main() {
 
 class Solution:
     def addMinimum(self, A, curr='a', res=0):
-        for i in range(len(A)):
+        i = 0
+        while i < len(A):
             if A[i] == curr:
                 i += 1
             else:
@@ -45,5 +46,5 @@ class Solution:
 
 
 obj = Solution()
-print(obj.addMinimum("aabc"))
+print(obj.addMinimum("aaac"))
 
