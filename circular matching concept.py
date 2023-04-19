@@ -11,13 +11,24 @@ else, we will keep moving the curr only until it matches with current character.
 Number of times curr mismatched is our answer
 
 C++ code
-int addMinimum(string A, char curr = 'a', int res = 0) {
-    for(int i = 0;i < A.size();){
-        if(A[i] == curr) ++i;
-        else ++res;
-		curr = 'a' + ((curr - 'a') + 1) % 3;
-	}
-    return res + (curr == 'a' ? 0 : 'c' - curr + 1);
+#include <iostream>
+using namespace std;
+
+int main() {
+    string A = "aabc";
+    char curr = 'a';
+    int res = 0;
+    for(int i = 0; i < A.size(); ) {
+        if(A[i] == curr) {
+            ++i;
+        }
+        else {
+            ++res;
+        }
+        curr = 'a' + ((curr - 'a') + 1) % 3;
+    }
+    printf("%d", res + (curr == 'a' ? 0 : 'c' - curr + 1));
+    return 0;
 }
 
 '''
