@@ -27,4 +27,4 @@ class Solution:
 obj = Solution()
 print(obj.checkInclusion(
 "ab",
-"eidboaoo"))
+"eidbaoaoo"))
