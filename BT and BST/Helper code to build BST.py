@@ -14,4 +14,4 @@ def build_tree(s):
 
 # Call build_tree function by passing the input string
 # build_tree('[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]')
-build_tree('[3,9,20,null,null,15,7]')
+build_tree('[4,9,0,5,1]')
