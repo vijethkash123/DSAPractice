@@ -40,6 +40,7 @@ dict.
 for a, dv in temp:
     ans[frozenset(dv)].append(a)
 
+print(f"ans: {ans}")
 print(list(ans.values()))
 
 

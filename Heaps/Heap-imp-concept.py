@@ -1,3 +1,32 @@
+'''BASICS'''
+
+'''
+heappush(heap, ele): This function is used to insert the element mentioned in its arguments into a heap. The order is adjusted, so that heap structure is maintained.
+heappop(heap): This function is used to remove and return the smallest element from the heap. The order is adjusted, so that heap structure is maintained.
+
+By default heapq gives us minHeap
+To get maxHeap we convert list of numbers to negative nums and then use heapify to get maxHeap. See Last Stone weight problem
+'''
+import heapq
+
+nums = [2,7,4,1,8,1]
+nums = [-i for  i in nums]
+heapq.heapify(nums)
+
+while nums:
+    print(heapq.heappop(nums))
+
+'''
+Output:
+-8
+-7
+-4
+-2
+-1
+-1
+'''
+
+
 '''
 NOTE: just heapify'ing it win't make it sorted.
 Only when you pop, heap runs a bubbling operation, so it returns elements in sorted order.
