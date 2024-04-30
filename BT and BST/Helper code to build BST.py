@@ -15,3 +15,8 @@ def build_tree(s):
 # Call build_tree function by passing the input string
 # build_tree('[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]')
 build_tree('[4,9,0,5,1]')
+
+
+'''
+Binary Search Tree - Visualization: https://www.cs.usfca.edu/~galles/visualization/BST.html
+'''

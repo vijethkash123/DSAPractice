@@ -41,6 +41,6 @@ class Sort:
         return ans
 
 obj = Sort()
-print(obj.mergeSort([6,5,4,3,2,1]))
+print(obj.mergeSort([6,7,5,4,3,2,1]))
 print(obj.mergeSort([]))
 print(obj.mergeSort([1,2,2,1,1]))
