@@ -6,6 +6,9 @@ heappop(heap): This function is used to remove and return the smallest element f
 
 By default heapq gives us minHeap
 To get maxHeap we convert list of numbers to negative nums and then use heapify to get maxHeap. See Last Stone weight problem
+
+Complexity of all operations on Heapify functions python:
+https://stackoverflow.com/questions/38806202/whats-the-time-complexity-of-functions-in-heapq-library#:~:text=The%20complexity%20is%20O(n,O(n%20log%20n).
 '''
 import heapq
 

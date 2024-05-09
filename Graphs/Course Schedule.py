@@ -1,34 +1,37 @@
-from collections import defaultdict, deque
+from collections import deque
 from typing import List
 
-#  Using Kahn's algorithm for Cycle detection.
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        visitedC = 0
-        adj = defaultdict(list)
-        for i in prerequisites:
-            adj[i[0]].append(i[1])  # Directed graph, no need to add v -> u. Only u -> v is enough 
+        visited = set()
+        adj = {i : [] for i in range(numCourses)}
+        for crs, pre in prerequisites:
+            adj[crs].append(pre)  # Directed graph, no need to add v -> u. Only u -> v is enough 
 
-        indegree = [0] * numCourses
-        for u,v in adj.items():
-            for vertex in v:
-                indegree[vertex] += 1
-
-        leaves = deque()
-        for i in range(len(indegree)):
-            if indegree[i] == 0:
-                leaves.append(i)
-
-        while leaves:
-            node = leaves.popleft()
-            visitedC += 1
-            for nei in adj[node]:
-                indegree[nei] -= 1
-                if indegree[nei] == 0:
-                    leaves.append(nei)
+        # if adj[crs] = [], it means it can be completed right away and has no prerequisites, or has outdegree of 0
         
-        return visitedC == numCourses
+        def dfs(node):
+            if node in visited:  # we detected a cycle if we visit same node twice
+                return False
+            if adj[node] == []:
+                return True   # marking as complete
+            
+            visited.add(node)
+            for nei in adj[node]:
+                if not dfs(nei):
+                    return False  # if we detect cycle, immediately return False
+            visited.remove(node)
+            adj[node] = []
+            return True
+        
+        for course in range(numCourses):
+            if not dfs(course):
+                return False
+        return True
 
 
 
-print(Solution().canFinish(3, [[0,1],[0,2],[1,2],[2,1]]))
+
+print(Solution().canFinish(8, [[1,0],[2,6],[1,7],[6,4],[7,0],[0,5]]))
+# print(Solution().canFinish(2, [[1,0]]))
