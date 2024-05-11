@@ -8,6 +8,11 @@ By default heapq gives us minHeap
 To get maxHeap we convert list of numbers to negative nums and then use heapify to get maxHeap. See Last Stone weight problem
 
 Complexity of all operations on Heapify functions python:
+Max Heap, which will take O(n + k.log(n)) 
+where n -> for converting list to Heap
+k-> popping k times from maxHeap, and each pop in Heap takes log(n) time, and popping k elements take O((n-k) log(n)) time, with n total elements
+So, it's O(n+k.log(n))
+So, if k is small, it will be better than O(n.log(n)) solution
 https://stackoverflow.com/questions/38806202/whats-the-time-complexity-of-functions-in-heapq-library#:~:text=The%20complexity%20is%20O(n,O(n%20log%20n).
 '''
 import heapq
