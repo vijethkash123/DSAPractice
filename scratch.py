@@ -1,37 +1,61 @@
+from typing import List
 
-masked = {chr(val): val-96 for val in range(ord('a'), ord('j')+1)}
-print(masked)
-
-word = "aab"
-prefixXor = [0] * 4
-xorred = 0
-for i, c in enumerate(word):
-    xorred = xorred ^ masked[c]
-    prefixXor[i+1] = xorred
-
-print(prefixXor)
-
-
-# LeetCode 1915
 class Solution:
-    def wonderfulSubstrings(self, word: str) -> int:
-        ans = 0
-        # creating respective masks from A to J
-        masked = {chr(val): val-96 for val in range(ord('a'), ord('j')+1)}
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        ni, nj = len(grid), len(grid[0])
+        res = 0
+        visited = set()
+        def backtrack(i, j, subset):
+            nonlocal res
+            nonlocal visited
+            if grid[i][j] == 0 or (i, j) in visited:
+                return
+            if i == ni or j == nj:
+                res = max(res, sum(subset))
+                return
 
-        for j in range(len(word)):
-            xorred = 0
-            prefixXor = [0] * (len(word[j:]) + 1)
-            for i, c in enumerate(word[j:]):
-                print(word[j:])
-                xorred = xorred ^ masked[c]
-                if xorred in prefixXor:
-                    ans += 1
-                prefixXor[i+1] = xorred
+            visited.add((i, j))
+
+            if i + 1 < ni:
+                subset = subset + [grid[i+1][j]]
+                backtrack(i + 1, j, subset)
+                subset.pop()
+
+            if i - 1 >= 0:
+                subset = subset + [grid[i-1][j]]
+                backtrack(i - 1, j, subset)
+                
+                subset.pop()
+
+            if j + 1 < nj:
+                subset = subset + [grid[i][j+1]]
+                backtrack(i, j + 1, subset)
+                subset.pop()
+
+            if j - 1 >= 0:
+                subset = subset + [grid[i][j-1]]
+                backtrack(i, j - 1, subset)
+                subset.pop()
+
+        final = 0
+        for i in range(ni):
+            for j in range(nj):
+                if grid[i][j] != 0:
+                    # print(grid[i][j])
+                    res = 0
+                    visited = set()
+                    visited.add((i, j))
+                    backtrack(i, j, [grid[i][j]])
+                    final = max(res, final)
             
-        return ans
+        return final
+    
+print(Solution().getMaximumGold(grid=[[0,6,0],
+                                      [5,8,7],
+                                      [0,9,0]]))
 
-
-
-# print(Solution().wonderfulSubstrings("aabb"))
-print(Solution().wonderfulSubstrings("aab"))
+# print(Solution().getMaximumGold(grid=[[1,0,7],
+#                                       [2,0,6],
+#                                       [3,4,5],
+#                                       [0,3,0],
+#                                       [9,0,20]]))
