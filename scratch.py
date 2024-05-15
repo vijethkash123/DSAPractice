@@ -1,61 +1,29 @@
+from collections import defaultdict
 from typing import List
 
 class Solution:
-    def getMaximumGold(self, grid: List[List[int]]) -> int:
-        ni, nj = len(grid), len(grid[0])
-        res = 0
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
         visited = set()
-        def backtrack(i, j, subset):
-            nonlocal res
+        adj = defaultdict(list)
+
+        for u, v in edges:
+            adj[u].append(v)
+            adj[v].append(u)  # Undirected, so add both directions
+        
+        print(adj)
+        def dfs(node):
             nonlocal visited
-            if grid[i][j] == 0 or (i, j) in visited:
-                return
-            if i == ni or j == nj:
-                res = max(res, sum(subset))
-                return
+            if node in visited:
+                return False
+            for nei in adj[node]:
+                visited.add(nei)
+                dfs(nei)
+            return True
 
-            visited.add((i, j))
+        res = dfs(0)
+        if len(visited) == n and res:
+            return True
+        else:
+            return False
 
-            if i + 1 < ni:
-                subset = subset + [grid[i+1][j]]
-                backtrack(i + 1, j, subset)
-                subset.pop()
-
-            if i - 1 >= 0:
-                subset = subset + [grid[i-1][j]]
-                backtrack(i - 1, j, subset)
-                
-                subset.pop()
-
-            if j + 1 < nj:
-                subset = subset + [grid[i][j+1]]
-                backtrack(i, j + 1, subset)
-                subset.pop()
-
-            if j - 1 >= 0:
-                subset = subset + [grid[i][j-1]]
-                backtrack(i, j - 1, subset)
-                subset.pop()
-
-        final = 0
-        for i in range(ni):
-            for j in range(nj):
-                if grid[i][j] != 0:
-                    # print(grid[i][j])
-                    res = 0
-                    visited = set()
-                    visited.add((i, j))
-                    backtrack(i, j, [grid[i][j]])
-                    final = max(res, final)
-            
-        return final
-    
-print(Solution().getMaximumGold(grid=[[0,6,0],
-                                      [5,8,7],
-                                      [0,9,0]]))
-
-# print(Solution().getMaximumGold(grid=[[1,0,7],
-#                                       [2,0,6],
-#                                       [3,4,5],
-#                                       [0,3,0],
-#                                       [9,0,20]]))
+print(Solution().validTree(n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]))
