@@ -1,37 +1,31 @@
+from collections import defaultdict
+from typing import List
 
-masked = {chr(val): val-96 for val in range(ord('a'), ord('j')+1)}
-print(masked)
-
-word = "aab"
-prefixXor = [0] * 4
-xorred = 0
-for i, c in enumerate(word):
-    xorred = xorred ^ masked[c]
-    prefixXor[i+1] = xorred
-
-print(prefixXor)
-
-
-# LeetCode 1915
 class Solution:
-    def wonderfulSubstrings(self, word: str) -> int:
-        ans = 0
-        # creating respective masks from A to J
-        masked = {chr(val): val-96 for val in range(ord('a'), ord('j')+1)}
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        visited = set()
+        adj = defaultdict(list)
 
-        for j in range(len(word)):
-            xorred = 0
-            prefixXor = [0] * (len(word[j:]) + 1)
-            for i, c in enumerate(word[j:]):
-                print(word[j:])
-                xorred = xorred ^ masked[c]
-                if xorred in prefixXor:
-                    ans += 1
-                prefixXor[i+1] = xorred
-            
-        return ans
+        for u, v in edges:
+            adj[u].append(v)
+            adj[v].append(u)  # Undirected, so add both directions
+        
+        # print(adj)
+        def dfs(node):
+            nonlocal visited
+            if node in visited:
+                return False
+            visited.add(node)
+            for nei in adj[node]:
+                if not dfs(nei):
+                    return False
+            return True
+
+        res = dfs(0)
+        if len(visited) == n and res:
+            return True
+        else:
+            return False
 
 
-
-# print(Solution().wonderfulSubstrings("aabb"))
-print(Solution().wonderfulSubstrings("aab"))
+print(Solution().validTree(n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]))
