@@ -11,17 +11,15 @@ class Solution:
             adj[u].append(v)
             adj[v].append(u)  # Undirected, so add both directions
         
-        print(adj)
+        # print(adj)
         def dfs(node):
             nonlocal visited, prev
             if node in visited and node != prev:
                 return False
             visited.add(node)
-            prev = node
             for nei in adj[node]:
-                if nei != prev:
-                    if not dfs(nei):
-                        return False
+                if not dfs(nei):
+                    return False
             return True
 
 
@@ -31,4 +29,4 @@ class Solution:
         return True
 
 
-print(Solution().validTree(n=5, edges=[[0,1],[0,2],[0,3],[1,4]]))
+print(Solution().validTree(n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]))
