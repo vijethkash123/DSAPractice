@@ -22,7 +22,7 @@ class Solution:
                 return left & right
             
         return dfs(root)
-    
+
 
 root = TreeNode(2)
 root.left = TreeNode(1)       
