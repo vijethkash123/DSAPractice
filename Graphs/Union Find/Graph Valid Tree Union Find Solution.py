@@ -2,9 +2,9 @@ from typing import List
 
 
 class Solution:
-    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
-        parent = [i for i in range(len(edges) + 1)]
-        size = [1] * (len(edges) + 1)
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        parent = [i for i in range(n)]
+        size = [1] * (n)
 
         # find function
         def find(n):
@@ -33,7 +33,14 @@ class Solution:
 
         for n1, n2 in edges:
             if not union(n1, n2):
-                return [n1, n2]  # returning the redundant edge
+                return False
+        
+        if len(set(parent)) == 1:  # making sure there's only 1 root remaining, means there are no disconnected components which leads to invalid Tree
+            return True
+        else:
+            return False
 
+print(Solution().validTree(n=5, edges=[[0,1],[2,3]]))
+print(Solution().validTree(n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]))
+print(Solution().validTree(n=5, edges=[[0,1],[0,2],[0,3],[1,4]]))
 
-print(Solution().findRedundantConnection(edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]))

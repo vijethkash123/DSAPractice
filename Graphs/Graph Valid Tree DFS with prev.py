@@ -28,3 +28,5 @@ class Solution:
         if len(visited) != n or not res:
             return False
         return True
+    
+# Check Union Find solution for it in Union Find folder, note in Notion.
