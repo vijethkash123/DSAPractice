@@ -20,7 +20,7 @@ class Solution:
         mst_edges = 0
 
         while edges:
-            w, u, v = heappop(edges)
+            w, u, v = heapq.heappop(edges)
             if self.union(u, v):
                 mst_weight += w
                 mst_edges += 1
