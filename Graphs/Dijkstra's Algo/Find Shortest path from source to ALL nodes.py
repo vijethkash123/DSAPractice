@@ -24,3 +24,5 @@ class Solution:
         return dist
 
 print(Solution.dijkstra(V = 3, adj = {0: [[1, 1], [6, 2]], 1: [[3, 2], [1, 0]], 2: [[3, 1], [6, 0]]}, S = 2))
+print(Solution.dijkstra(V = 3, adj = {0: [[4, 1], [1, 2]],1: [] ,2: [[2, 1]]}, S = 0))  
+print(Solution.dijkstra(V = 4, adj = {0: [[7, 1], [4, 2]],1: [] ,2: [[4, 1], [1, 3]], 3:[[1, 1]]}, S = 0))  
