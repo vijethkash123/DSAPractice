@@ -1,8 +1,7 @@
 # Leetcode - 2331
-# Definition for a binary tree node.
 from typing import Optional
 
-
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -23,7 +22,7 @@ class Solution:
                 return left & right
             
         return dfs(root)
-    
+
 
 root = TreeNode(2)
 root.left = TreeNode(1)       
