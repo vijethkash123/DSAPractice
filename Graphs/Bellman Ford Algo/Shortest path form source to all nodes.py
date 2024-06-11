@@ -1,3 +1,5 @@
+import time
+
 class Solution:
     '''
     V: number of vertices/ nodes in graph
@@ -22,8 +24,11 @@ class Solution:
 
         return dist
 
-# print(Solution().bellman_ford(V = 3, edges = [[0,1,5],[1,0,3],[1,2,-1],[2,0,1]], S = 2))
-# print(Solution().bellman_ford(V = 2, edges = [[0,1,9]], S = 0))
+start = time.perf_counter()
+print(Solution().bellman_ford(V = 3, edges = [[0,1,5],[1,0,3],[1,2,-1],[2,0,1]], S = 2))
+print(Solution().bellman_ford(V = 2, edges = [[0,1,9]], S = 0))
 print(Solution().bellman_ford(V = 4, edges=[[0,1,1], [1,2,1], [2,0,1], [2,3,1]], S = 0))  # Graph with positive cycle, shortest path still works
 # Example 3 explanation:
 # https://stackoverflow.com/questions/70681479/can-bellman-ford-algorithm-handle-positive-cycles
+print(Solution().bellman_ford(V = 3, edges = [[0, 1, -1], [1, 2, -2], [2, 0, -3]], S = 0)) # negative cycle
+print(time.perf_counter() - start)
