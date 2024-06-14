@@ -10,8 +10,9 @@ class Solution:
 
         for u, v, w in edges:
             matrix[u][v] = w
+            # matrix[v][u] = w  # If undirected, also add this
 
-
+        # Floyd Warshall Algo
         for k in range(V):  # via loop
             for i in range(V):
                 for j in range(V):
