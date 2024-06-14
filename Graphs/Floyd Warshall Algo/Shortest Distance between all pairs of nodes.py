@@ -1,5 +1,5 @@
 class Solution:
-    def FloydWarshallAPSP(self, V, edges):
+    def FloydWarshall(self, V, edges):
         # create a initial cost matrix from edge[u, v, w], V -> Number of vertices
         matrix = [[float("inf") for _ in range(V)] for x in range(V)]
         
@@ -29,10 +29,10 @@ class Solution:
         return matrix
 
 
-print(Solution().FloydWarshallAPSP(V = 4, edges=[[0,1,2],[1,0,1],[3,0,3],[3,2,4],[3,1,5],[1,2,3]])) 
+print(Solution().FloydWarshall(V = 4, edges=[[0,1,2],[1,0,1],[3,0,3],[3,2,4],[3,1,5],[1,2,3]])) 
 # Ans:
 # [[0, 2, 5, inf], 
 #  [1, 0, 3, inf], 
 #  [inf, inf, 0, inf], 
 #  [3, 5, 4, 0]]
-print(Solution().FloydWarshallAPSP(V = 3, edges = [[0, 1, -1], [1, 2, -2], [2, 0, -3]]))  # negative cycle
+print(Solution().FloydWarshall(V = 3, edges = [[0, 1, -1], [1, 2, -2], [2, 0, -3]]))  # negative cycle
