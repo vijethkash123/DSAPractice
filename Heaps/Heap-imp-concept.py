@@ -84,6 +84,7 @@ trips = [[3, 4], [3, 2], [4, 6], [5, 4], [5, -4], [5, -2], [6, -4], [7, -6]]
 heapq.heapify(trips)
 
 while trips:
+    print(trips[0])  # Note that this also gives up min element without popping, we can use it in case we need to peek into the small element without popping it, just in cases where we need to check some values. Used in case of IPO problem to peek into minHeap of capitals.
     print(heapq.heappop(trips))
 
 '''
