@@ -50,7 +50,7 @@ class Solution:
                     
             if find(0) == find(N*N-1): return i
 
-# print(Solution().swimInWater(grid = [[0,2],[1,3]]))
+print(Solution().swimInWater(grid = [[0,2],[1,3]]))
 
 
 class Solution2:
