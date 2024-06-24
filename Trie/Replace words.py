@@ -50,5 +50,4 @@ class Trie:
 
 
 
-
 print(Solution().replaceWords(dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"))
