@@ -41,7 +41,7 @@ class Solution:
     def compare(self, w1, w2):
 
         minLen = min(len(w1), len(w2))
-        if (len(w1) > len(w2) and w1[:len(w2)] == w2):
+        if (len(w1) > len(w2) and w1[:len(w2)] == w2):  # C1
                 return False
         for i in range(minLen):
             if w1[i] != w2[i]:
@@ -50,7 +50,10 @@ class Solution:
         return True
 
             
-print(Solution().foreignDictionary(words = ["hrn","hrf","er","enn","rfnn"]))
-print(Solution().foreignDictionary(words=["wrtkj","wrt"]))
-print(Solution().foreignDictionary(words=["wrt","wrf","er","ett","rftt","te"]))
+print(Solution().foreignDictionary(words = ["hrn","hrf","er","enn","rfnn"]))  # hernf
+print(Solution().foreignDictionary(words=["wrtkj","wrt"]))  # ""
+print(Solution().foreignDictionary(words=["wrt","wrf","er","ett","rftt","te"]))  # wertf
+print(Solution().foreignDictionary(words=["a", "aa", "aaa"]))  # returns a  -> Because it's lexicographically valid as smaller prefix comes before same longer word
+print(Solution().foreignDictionary(words=["aaa", "aa", "a"]))  # returns "" -> Because smaller length prefix should come first to be a valid lexicographically sorted order
+
 
