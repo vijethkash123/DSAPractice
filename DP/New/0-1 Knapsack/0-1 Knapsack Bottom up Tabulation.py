@@ -1,3 +1,8 @@
+'''
+knapSack -> General bottom up approach 2D array
+knapSack_two_row -> Just using 2 single rows prev and cur instead of whole 2D array
+knapSack_single_row -> Overwriting same prev row by iterating right to left n-1 to 0 and not making use of 2 rows cur and prev.
+'''
 class Solution:
     
     # Function to return max value that can be put in knapsack of capacity maxWeight.
@@ -90,3 +95,9 @@ print(Solution().knapSack(maxWeight=7, wt=[1,2,4], val=[10,15,40], n=3))
 print(Solution().knapSack_two_row(maxWeight=8, wt=[5,2,3,1], val=[4,4,7,1], n=4))
 print(Solution().knapSack_two_row(maxWeight=4, wt=[4,5,1], val=[1,2,3], n=3))
 print(Solution().knapSack_two_row(maxWeight=7, wt=[1,2,4], val=[10,15,40], n=3))
+
+
+
+print(Solution().knapSack_single_row(maxWeight=8, wt=[5,2,3,1], val=[4,4,7,1], n=4))
+print(Solution().knapSack_single_row(maxWeight=4, wt=[4,5,1], val=[1,2,3], n=3))
+print(Solution().knapSack_single_row(maxWeight=7, wt=[1,2,4], val=[10,15,40], n=3))
