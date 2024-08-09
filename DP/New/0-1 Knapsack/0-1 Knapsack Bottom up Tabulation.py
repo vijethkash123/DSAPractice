@@ -2,27 +2,34 @@ class Solution:
     
     # Function to return max value that can be put in knapsack of capacity maxWeight.
     def knapSack(self, maxWeight, wt, val, n):
-        # Initialize the dp table with 0. dp[i][j] will store the maximum value that can be obtained
+        # Initialize the dp table with 0
+        dp = [[0 for _ in range(maxWeight+1)] for x in range(n)]
+
+        # dp[i][j] will store the maximum value that can be obtained
         # with the first i items and a knapsack capacity of j.
-        dp = [[0 for _ in range(maxWeight + 1)] for _ in range(n + 1)]
+        # Value is rows and capacity is column
+        
+        # Base case for calculating the first row when we can choose only items[0]. 
+        for c in range(maxWeight+1):
+            if wt[0] <= c:
+                dp[0][c] = val[0]
 
-        # Iterate over each item
-        for ind in range(1, n + 1):
-            # Iterate over each capacity from 0 to maxWeight
-            for w in range(maxWeight + 1):
-                # Case when the current item is not included
-                no_take = dp[ind - 1][w]
+
+        # Process Bottom up
+        for ind in range(1, n):    
+            for w in range(maxWeight+1):
                 
-                # Case when the current item is included
+                no_take = 0 + dp[ind - 1][w]
+
                 take = float("-inf")
-                if wt[ind - 1] <= w:
-                    take = val[ind - 1] + dp[ind - 1][w - wt[ind - 1]]
-                
-                # Store the maximum value obtained by including or not including the current item
-                dp[ind][w] = max(take, no_take)
+                if wt[ind] <= w:
+                    take = val[ind] + dp[ind - 1][w - wt[ind]]
 
-        # The answer is the maximum value that can be obtained with all n items and capacity maxWeight
-        return dp[n][maxWeight]
+                dp[ind][w] = max(take, no_take)
+        # print(dp)
+        return dp[n-1][maxWeight]
             
 # Example usage
-print(Solution().knapSack(maxWeight=4, wt=[4, 5, 1], val=[1, 2, 3], n=3))
+print(Solution().knapSack(maxWeight=8, wt=[5,2,3,1], val=[4,4,7,1], n=4))
+print(Solution().knapSack(maxWeight=4, wt=[4,5,1], val=[1,2,3], n=3))
+print(Solution().knapSack(maxWeight=7, wt=[1,2,4], val=[10,15,40], n=3))
