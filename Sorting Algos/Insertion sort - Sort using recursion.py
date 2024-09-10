@@ -25,7 +25,7 @@ class Solution:
             nums[i + 1] = nums[i]
             i = i - 1
 
-        nums[i + 1] = element
+        nums[i + 1] = element  # i + 1 would be at the insert position where this can be inserted
         
 
 print(Solution().sort(nums = [3,2,1,5,4,7,6]))
