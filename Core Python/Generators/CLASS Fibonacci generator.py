@@ -26,5 +26,5 @@ fibonacci = FibonacciIterator(n)
 first_fibonacci = fibonacci.__next__()
 print(first_fibonacci)
 
-# for num in fibonacci:
-#     print(num, end=' ')
+for num in fibonacci:
+    print(num, end=' ')

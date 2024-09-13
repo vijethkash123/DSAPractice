@@ -7,3 +7,10 @@ def fibonacci(n):
 for num in fibonacci(10):
     print(num)
 
+f = fibonacci(10)
+
+print(f.__next__())
+print(f.__next__())
+print(f.__next__())
+print(f.__next__())
+print(f.__next__())
