@@ -1,5 +1,5 @@
 def build_tree(s):
-    s = s[1:-1].split(',')
+    s = s[1:-1].split(',')  # to remove brackets in the input string and then convert it to list
     if len(s) == 0:
         return
     nodes = [('root', s[0])]
@@ -14,7 +14,7 @@ def build_tree(s):
 
 # Call build_tree function by passing the input string
 # build_tree('[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]')
-build_tree('[1,3,3,3,2]')
+build_tree('[3, 9, 20, None, None, 15, 7]')
 
 
 '''

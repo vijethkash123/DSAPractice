@@ -23,8 +23,12 @@ class FibonacciIterator:
 
 n = 10
 fibonacci = FibonacciIterator(n)
-first_fibonacci = fibonacci.__next__()
+first_fibonacci = fibonacci.__next__()  # We made the class a generator that now we can access it via __next__()
+sec_fibonacci = fibonacci.__next__()
+
 print(first_fibonacci)
+print(sec_fibonacci)
+
 
 for num in fibonacci:
-    print(num, end=' ')
+    print(num, end=' ')  # generators maintain the state, so this returns the remaining fibonacci numbers as we have already called next twice.
