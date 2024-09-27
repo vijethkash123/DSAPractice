@@ -10,3 +10,5 @@ if __name__ == "__main__":
     result = p.map(f,[1,2,3,4,5])
     print(list(result))
     
+
+# also see another example from ArjanCodes added under GIL section in Notion notes!
