@@ -15,3 +15,8 @@ if __name__ == "__main__":
     while q.empty() is False:
         print(q.get())
 
+"""
+multiprocessing.Queue() -> to create queue
+q.empty() -> check if queue is empty
+q.get() -> pop each item from queue front to get the result of calcuation that happened in the function called with multiprocessing
+"""
