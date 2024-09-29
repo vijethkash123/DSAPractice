@@ -8,15 +8,13 @@ Space complexity: O(1)
 
 def bubble_sort(arr):
 
-    # Outer loop to iterate through the list n times
-    for n in range(len(arr) - 1, 0, -1):  # going till index 1 is fine, we don't 
+    # Outer loop to iterate through the list n times, at each step largest number gets bubbled to last index.
+    for n in range(len(arr) - 1, 0, -1):  # going till index 1 is fine, we don't have to compare 0th index element
 
         # Inner loop to compare adjacent elements
         for i in range(n):
             if arr[i] > arr[i + 1]:
-
                 # Swap elements if they are in the wrong order
-                swapped = True
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
 
 
