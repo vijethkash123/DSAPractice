@@ -24,3 +24,25 @@ print(isPrime(13))
 print(isPrime(12))
 print(isPrime(9))
 print(isPrime(23))
+
+
+"""
+To generate prime numbers from 1 to n. Note: else in for else is only executed when the break is `not` encountered.
+"""
+def generate_primes(n):
+    primes = []
+    for num in range(2, n + 1):
+        for divisor in range(2, int(num ** 0.5) + 1):
+            if num % divisor == 0:
+                break
+        else:
+            primes.append(num)
+    return primes
+
+# Get user input
+n = int(input("Enter the upper limit for prime numbers: "))
+
+# Generate and print prime numbers
+prime_numbers = generate_primes(n)
+print(f"Prime numbers between 2 and {n} are:")
+print(prime_numbers)

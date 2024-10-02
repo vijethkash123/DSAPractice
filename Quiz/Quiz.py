@@ -190,3 +190,9 @@ t4.join()
 # adding join so that next print happens after both are executed
 print("-----------------------------------------------------------------------------------")
 
+data = [1, 2, 3, 4, 5, 6]
+for x in data:
+    data.remove(x)
+print(data)
+
+print("-----------------------------------------------------------------------------------")
