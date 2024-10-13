@@ -50,3 +50,18 @@ class Solution:
         return flips
 
 print(Solution().minSwaps("]]][[["))
+
+
+class Solution:
+    def minSwaps(self, s: str) -> int:
+        unmatched_size = 0
+        for i in s:
+            if i =='[':
+                unmatched_size = unmatched_size + 1
+            else:
+                if unmatched_size > 0:
+                    unmatched_size = unmatched_size - 1 
+        return (unmatched_size + 1) // 2
+
+print(Solution().minSwaps("]]][[["))
+

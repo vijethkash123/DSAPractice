@@ -36,7 +36,7 @@ Output:
 
 
 '''
-NOTE: just heapify'ing it win't make it sorted.
+NOTE: just heapify'ing it won't make it sorted.
 Only when you pop, heap runs a bubbling operation, so it returns elements in sorted order.
 See this example, that Observed during **Design Twitter** problem.
 
@@ -106,3 +106,14 @@ Output for trips.sort(key = lambda x:x[0]):
 
 Notice, the negative appears after the positive (picking up before drop) -> which we donot want.
 '''
+
+
+"""
+In a min-heap:
+
+heap[0] is guaranteed to be the smallest element.
+heap[-1] simply accesses the last element in the internal list representation of the heap. 
+This element does not hold any special significance regarding its value relative to 
+the other elements in the heap. Its position is determined by the order of insertion 
+and the heap's balancing operations, not by its value.
+"""
